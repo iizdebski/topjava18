@@ -5,7 +5,7 @@ function makeEditable(ctx) {
     form = $('#detailsForm');
     $(document).ajaxError(function (event, jqXHR, options, jsExc) {
         failNoty(jqXHR);
-});
+    });
 
     // solve problem with cache in IE: https://stackoverflow.com/a/4303862/548473
     $.ajaxSetup({cache: false});
@@ -16,8 +16,17 @@ function add() {
     $("#editRow").modal();
 }
 
+function updateRow(id) {
+    $.get(context.ajaxUrl + id, function (data) {
+        $.each(data, function (key, value) {
+            form.find("input[name='" + key + "']").val(value);
+        });
+        $('#editRow').modal();
+    });
+}
+
 function deleteRow(id) {
-    if(confirm('Are you sure?')) {
+    if (confirm('Are you sure?')) {
         $.ajax({
             url: context.ajaxUrl + id,
             type: "DELETE"
@@ -29,7 +38,7 @@ function deleteRow(id) {
 }
 
 function updateTableByData(data) {
-        context.datatableApi.clear().rows.add(data).draw();
+    context.datatableApi.clear().rows.add(data).draw();
 }
 
 function save() {
