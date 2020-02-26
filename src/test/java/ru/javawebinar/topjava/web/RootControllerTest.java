@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 import static ru.javawebinar.topjava.UserTestData.ADMIN;
+import static ru.javawebinar.topjava.UserTestData.USER;
 
 class RootControllerTest extends AbstractControllerTest {
 
@@ -31,7 +32,7 @@ class RootControllerTest extends AbstractControllerTest {
 
     @Test
     void getMeals() throws Exception {
-        perform(doGet("meals"))
+        perform(doGet("meals").auth(USER))
                 .andDo(print())
                 .andExpect(status().isOk())
                 .andExpect(view().name("meals"))
