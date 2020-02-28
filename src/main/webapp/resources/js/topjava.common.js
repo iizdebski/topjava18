@@ -40,6 +40,10 @@ function updateRow(id) {
     });
 }
 
+function formatDate(date) {
+    return date.replate('T', ' ').substr(0, 16);
+}
+
 function deleteRow(id) {
     if (confirm(i18n['common.confirm'])) {
         $.ajax({
@@ -89,9 +93,9 @@ function successNoty(key) {
 
 function failNoty(jqXHR) {
     closeNoty();
-    var responseJSON = JSON.parse(jqXHR.responseText);
+    var errorInfo = JSON.parse(jqXHR.responseText);
     failedNote = new Noty({
-        text: "<span class='fa fa-lg fa-exclamation-circle'></span> &nbsp;" + i18n["common.errorStatus"] + ": " + jqXHR.status + (responseJSON ? "<br>" + responseJSON : ""),
+        text: "<span class='fa fa-lg fa-exclamation-circle'></span> &nbsp;" + i18n["common.errorStatus"] + ": " + jqXHR.status + "<br>" + errorInfo.type + "<br>" + errorInfo.detail,
         type: "error",
         layout: "bottomRight"
     }).show();
