@@ -40,7 +40,7 @@ function updateRow(id) {
     $("#modalTitle").html(i18n["editTitle"]);
     $.get(context.ajaxUrl + id, function (data) {
         $.each(data, function (key, value) {
-            form.find("input[name='" + key + "']").val(value);
+            form.find("input[name='" + key + "']") (value);
         });
         $('#editRow').modal();
     });
@@ -102,7 +102,7 @@ function failNoty(jqXHR) {
     closeNoty();
     var errorInfo = JSON.parse(jqXHR.responseText);
     failedNote = new Noty({
-        text: "<span class='fa fa-lg fa-exclamation-circle'></span> &nbsp;" + i18n["common.errorStatus"] + ": " + jqXHR.status + "<br>" + errorInfo.type + "<br>" + errorInfo.detail,
+        text: "<span class='fa fa-lg fa-exclamation-circle'></span> &nbsp;" + i18n["common.errorStatus"] + ": " + jqXHR.status + "<br>" + errorInfo.type + "<br>" + errorInfo.details.join("<br>"),
         type: "error",
         layout: "bottomRight"
     }).show();
