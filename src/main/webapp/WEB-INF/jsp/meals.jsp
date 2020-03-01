@@ -69,7 +69,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h4 class="modal-title" id="modalTitle"></h4>
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <button type="button" class="close" data-dismiss="modal" onclick="closeNoty()">&times;</button>
             </div>
             <div class="modal-body">
                 <form id="detailsForm">
@@ -78,7 +78,7 @@
                     <div class="form-group">
                         <label for="dateTime" class="col-form-label"><spring:message code="meal.dateTime"/></label>
                         <input class="form-control" id="dateTime" name="dateTime" autocomplete="off"
-                                placeholder="<spring:message code="meal.dateTime"/>">
+                               placeholder="<spring:message code="meal.dateTime"/>">
                     </div>
                     <div class="form-group">
                         <label for="description" class="col-form-label"><spring:message
@@ -94,7 +94,7 @@
                 </form>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="closeNoty()">
                     <span class="fa fa-close"></span>
                     <spring:message code="common.cancel"/>
                 </button>
@@ -109,6 +109,6 @@
 <jsp:include page="fragments/footer.jsp"/>
 </body>
 <jsp:include page="fragments/i18n.jsp">
-<jsp:param name="page" value="meal"/>
+    <jsp:param name="page" value="meal"/>
 </jsp:include>
 </html>

@@ -1,3 +1,4 @@
+
 package ru.javawebinar.topjava.web;
 
 import org.junit.jupiter.api.Test;
@@ -14,7 +15,7 @@ class ResourceControllerTest extends AbstractControllerTest {
     }
 
     @Test
-    void testResources() throws Exception {
+    void resources() throws Exception {
         perform(doGet())
                 .andDo(print())
                 .andExpect(content().contentType(MediaType.valueOf("text/css")))
