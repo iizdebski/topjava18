@@ -44,12 +44,12 @@ class MealRestControllerTest extends AbstractControllerTest {
                 .andExpect(status().isUnauthorized());
     }
 
+
     @Test
     void getNotFound() throws Exception {
         perform(doGet(ADMIN_MEAL_ID).basicAuth(USER))
                 .andExpect(status().isUnprocessableEntity());
     }
-
 
     @Test
     void delete() throws Exception {
@@ -131,5 +131,4 @@ class MealRestControllerTest extends AbstractControllerTest {
                 .andExpect(jsonPath("$.type").value(ErrorType.VALIDATION_ERROR.name()))
                 .andDo(print());
     }
-
 }
