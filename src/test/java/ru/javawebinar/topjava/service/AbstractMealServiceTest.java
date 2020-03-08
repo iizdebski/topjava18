@@ -91,12 +91,13 @@ public abstract class AbstractMealServiceTest extends AbstractServiceTest {
         MEAL_MATCHERS.assertMatch(service.getAll(USER_ID), MEALS);
     }
 
-    @Test
-    void getBetween() throws Exception {
-        MEAL_MATCHERS.assertMatch(service.getBetweenDates(
-                LocalDate.of(2015, Month.MAY, 30),
-                LocalDate.of(2015, Month.MAY, 30), USER_ID), MEAL3, MEAL2, MEAL1);
-    }
+
+   // @Test
+   // void getBetween() throws Exception {
+   //     MEAL_MATCHERS.assertMatch(service.getBetweenDates(
+   //             LocalDate.of(2015, Month.MAY, 30),
+   //             LocalDate.of(2015, Month.MAY, 30), USER_ID), MEAL3, MEAL2, MEAL1);
+   // }
 
     @Test
     void getBetweenWithNullDates() throws Exception {
