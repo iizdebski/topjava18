@@ -13,8 +13,6 @@ import ru.javawebinar.topjava.to.UserTo;
 import javax.validation.Valid;
 import java.net.URI;
 
-import static ru.javawebinar.topjava.web.SecurityUtil.authUserId;
-
 @RestController
 @RequestMapping(ProfileRestController.REST_URL)
 public class ProfileRestController extends AbstractUserController {

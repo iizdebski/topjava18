@@ -7,7 +7,6 @@ import ru.javawebinar.topjava.util.exception.ErrorType;
 import ru.javawebinar.topjava.util.exception.NotFoundException;
 
 import javax.validation.ConstraintViolationException;
-import java.time.LocalDate;
 import java.time.Month;
 
 import static java.time.LocalDateTime.of;
