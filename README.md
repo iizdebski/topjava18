@@ -3,7 +3,7 @@ Java Enterprise Online Project
 
 # http://topjava18b.herokuapp.com/
 
-[![Codacy Badge](https://api.codacy.com/project/badge/Grade/fbceac343bac4709a981f9a229ea1498)](https://www.codacy.com/manual/iizdebski/topjava18?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=iizdebski/topjava18&amp;utm_campaign=Badge_Grade)
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/5a26f93ef3b5456d9ebdb60b2cefd56b)](https://www.codacy.com/manual/iizdebski/topjava18b?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=iizdebski/topjava18b&amp;utm_campaign=Badge_Grade)
 
 Разработка полнофункционального Spring/JPA Enterprise приложения c авторизацией и правами доступа на основе ролей с использованием наиболее популярных инструментов и технологий Java: Maven, Spring MVC, Security, JPA(Hibernate), REST(Jackson), Bootstrap (css,js), datatables, jQuery + plugins, Java 8 Stream and Time API и хранением в базах данных Postgresql и HSQLDB.
 
