@@ -7,6 +7,7 @@ import ru.javawebinar.topjava.util.exception.ErrorType;
 import ru.javawebinar.topjava.util.exception.NotFoundException;
 
 import javax.validation.ConstraintViolationException;
+import java.time.LocalDate;
 import java.time.Month;
 
 import static java.time.LocalDateTime.of;
@@ -24,7 +25,6 @@ public abstract class AbstractMealServiceTest extends AbstractServiceTest {
     @Test
     void delete() throws Exception {
         service.delete(MEAL1_ID, USER_ID);
-        //assertMatch(service.getAll(USER_ID), MEAL6, MEAL5, MEAL4, MEAL3, MEAL2, MEAL1);
         assertThrows(NotFoundException.class, () ->
                 service.get(MEAL1_ID, USER_ID));
     }
@@ -46,7 +46,7 @@ public abstract class AbstractMealServiceTest extends AbstractServiceTest {
         Meal newMeal = getNew();
         Meal created = service.create(newMeal, USER_ID);
         Integer newId = created.getId();
-        newMeal.setId(created.getId());
+        newMeal.setId(newId);
         MEAL_MATCHERS.assertMatch(created, newMeal);
         MEAL_MATCHERS.assertMatch(service.get(newId, USER_ID), newMeal);
     }
@@ -78,7 +78,7 @@ public abstract class AbstractMealServiceTest extends AbstractServiceTest {
 
     @Test
     void updateNotFound() throws Exception {
-        NotFoundException e  = assertThrows(NotFoundException.class, () -> service.update(MEAL1, ADMIN_ID));
+        NotFoundException e = assertThrows(NotFoundException.class, () -> service.update(MEAL1, ADMIN_ID));
         String msg = e.getMessage();
         assertTrue(msg.contains(ErrorType.DATA_NOT_FOUND.name()));
         assertTrue(msg.contains(NotFoundException.NOT_FOUND_EXCEPTION));
@@ -90,12 +90,12 @@ public abstract class AbstractMealServiceTest extends AbstractServiceTest {
         MEAL_MATCHERS.assertMatch(service.getAll(USER_ID), MEALS);
     }
 
-    // @Test
-    // void getBetween() throws Exception {
-    // MEAL_MATCHERS.assertMatch(service.getBetweenDates(
-    //          LocalDate.of(2015, Month.MAY, 30),
-    //          LocalDate.of(2015, Month.MAY, 30), USER_ID), MEAL3, MEAL2, MEAL1);
-    // }
+    @Test
+    void getBetween() throws Exception {
+        MEAL_MATCHERS.assertMatch(service.getBetweenDates(
+                LocalDate.of(2015, Month.MAY, 30),
+                LocalDate.of(2015, Month.MAY, 30), USER_ID), MEAL3, MEAL2, MEAL1);
+    }
 
     @Test
     void getBetweenWithNullDates() throws Exception {
@@ -107,5 +107,6 @@ public abstract class AbstractMealServiceTest extends AbstractServiceTest {
         validateRootCause(() -> service.create(new Meal(null, of(2015, Month.JUNE, 1, 18, 0), "  ", 300), USER_ID), ConstraintViolationException.class);
         validateRootCause(() -> service.create(new Meal(null, null, "Description", 300), USER_ID), ConstraintViolationException.class);
         validateRootCause(() -> service.create(new Meal(null, of(2015, Month.JUNE, 1, 18, 0), "Description", 9), USER_ID), ConstraintViolationException.class);
+        validateRootCause(() -> service.create(new Meal(null, of(2015, Month.JUNE, 1, 18, 0), "Description", 5001), USER_ID), ConstraintViolationException.class);
     }
 }

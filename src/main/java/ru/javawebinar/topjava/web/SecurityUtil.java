@@ -1,6 +1,5 @@
 package ru.javawebinar.topjava.web;
 
-
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import ru.javawebinar.topjava.AuthorizedUser;

@@ -1,9 +1,9 @@
 package ru.javawebinar.topjava.web.meal;
 
-import com.sun.istack.Nullable;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.lang.Nullable;
 import ru.javawebinar.topjava.model.Meal;
 import ru.javawebinar.topjava.service.MealService;
 import ru.javawebinar.topjava.to.MealTo;
@@ -29,7 +29,7 @@ public abstract class AbstractMealController {
         return service.get(id, userId);
     }
 
-    public void delete(int id){
+    public void delete(int id) {
         int userId = SecurityUtil.authUserId();
         log.info("delete meal {} for user {}", id, userId);
         service.delete(id, userId);
@@ -56,12 +56,11 @@ public abstract class AbstractMealController {
     }
 
     /**
-     <ol>Filter separately
-     <li>by date</li>
-     <li>by time for every date</li>
-     </ol>
+     * <ol>Filter separately
+     * <li>by date</li>
+     * <li>by time for every date</li>
+     * </ol>
      */
-
     public List<MealTo> getBetween(@Nullable LocalDate startDate, @Nullable LocalTime startTime,
                                    @Nullable LocalDate endDate, @Nullable LocalTime endTime) {
         int userId = SecurityUtil.authUserId();
@@ -69,6 +68,5 @@ public abstract class AbstractMealController {
 
         List<Meal> mealsDateFiltered = service.getBetweenDates(startDate, endDate, userId);
         return MealsUtil.getFilteredTos(mealsDateFiltered, SecurityUtil.authUserCaloriesPerDay(), startTime, endTime);
-
     }
 }

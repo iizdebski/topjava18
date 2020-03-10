@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.support.SessionStatus;
 import ru.javawebinar.topjava.AuthorizedUser;
 import ru.javawebinar.topjava.to.UserTo;
-import ru.javawebinar.topjava.web.SecurityUtil;
 
 import javax.validation.Valid;
 
@@ -31,7 +30,6 @@ public class ProfileUIController extends AbstractUserController {
         }
         super.update(userTo, authUser.getId());
         authUser.update(userTo);
-        SecurityUtil.get().update(userTo);
         status.setComplete();
         return "redirect:/meals";
     }
@@ -48,10 +46,9 @@ public class ProfileUIController extends AbstractUserController {
         if (result.hasErrors()) {
             model.addAttribute("register", true);
             return "profile";
-        } else {
-            super.create(userTo);
-            status.setComplete();
-            return "redirect:/login?message=app.registered&username=" + userTo.getEmail();
         }
+        super.create(userTo);
+        status.setComplete();
+        return "redirect:/login?message=app.registered&username=" + userTo.getEmail();
     }
 }

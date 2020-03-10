@@ -37,7 +37,7 @@ public class User extends AbstractNamedEntity implements HasEmail {
     @Email
     @NotBlank
     @Size(max = 100)
-    @SafeHtml(groups = {View.Web.class}) // https://stackoverflow.com/questions/17480809
+    @SafeHtml(groups = {View.Web.class})  // https://stackoverflow.com/questions/17480809
     private String email;
 
     @Column(name = "password", nullable = false)

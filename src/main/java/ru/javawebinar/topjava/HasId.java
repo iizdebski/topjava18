@@ -7,11 +7,13 @@ public interface HasId {
 
     void setId(Integer id);
 
-    default boolean isNew() { return getId() == null; }
+    default boolean isNew() {
+        return getId() == null;
+    }
 
-    // doesn't work for hibernte lazy proxy
+    // doesn't work for hibernate lazy proxy
     default int id() {
-        Assert.notNull(getId(), "Entity must have id");
+        Assert.notNull(getId(), "Entity must has id");
         return getId();
     }
 }

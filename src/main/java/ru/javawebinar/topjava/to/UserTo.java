@@ -22,7 +22,7 @@ public class UserTo extends BaseTo implements HasEmail, Serializable {
     @Email
     @NotBlank
     @Size(max = 100)
-    @SafeHtml // SafeHtml=[{0}] может содержать небезопасный html контент
+    @SafeHtml // https://stackoverflow.com/questions/17480809
     private String email;
 
     @NotBlank
@@ -68,8 +68,6 @@ public class UserTo extends BaseTo implements HasEmail, Serializable {
     public void setEmail(String email) {
         this.email = email;
     }
-
-    public boolean isNew() { return id == null; }
 
     public void setCaloriesPerDay(Integer caloriesPerDay) {
         this.caloriesPerDay = caloriesPerDay;

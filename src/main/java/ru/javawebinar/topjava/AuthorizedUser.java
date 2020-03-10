@@ -14,12 +14,20 @@ public class AuthorizedUser extends org.springframework.security.core.userdetail
         this.userTo = UserUtil.asTo(user);
     }
 
-    public int getId() { return userTo.id(); }
+    public int getId() {
+        return userTo.id();
+    }
 
-    public void update(UserTo newTo) { userTo = newTo; }
+    public void update(UserTo newTo) {
+        userTo = newTo;
+    }
 
-    public UserTo getUserTo() { return userTo; }
+    public UserTo getUserTo() {
+        return userTo;
+    }
 
     @Override
-    public String toString() { return userTo.toString(); }
+    public String toString() {
+        return userTo.toString();
+    }
 }

@@ -3,7 +3,7 @@ package ru.javawebinar.topjava;
 import javax.validation.groups.Default;
 
 public class View {
-    // Validate only from UI/REST
+    // Validate only form UI/REST
     public interface Web extends Default {}
 
     // Validate only when DB save/update
