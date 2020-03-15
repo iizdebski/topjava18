@@ -1,7 +1,7 @@
 Java Enterprise Online Project 
 ===============================
 
-# http://topjava18b.herokuapp.com/meals
+# http://topjava18a.herokuapp.com/meals
 
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/fbceac343bac4709a981f9a229ea1498)](https://www.codacy.com/manual/iizdebski/topjava18?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=iizdebski/topjava18&amp;utm_campaign=Badge_Grade)
 
